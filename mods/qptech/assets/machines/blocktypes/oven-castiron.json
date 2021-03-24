@@ -3,7 +3,7 @@
 	
 	variantgroups: [
 		
-		{ code:"burnstate", states: ["construct1", "construct2", "construct3", "construct4", "extinct", "lit", "cold"]},
+		{ code:"burnstate", states: ["extinct", "lit", "cold"]},
 		{code:"side","loadFromProperties":"abstract/horizontalorientation"}
 	],
 	
@@ -250,7 +250,7 @@
 	resistance: 2.5,
 	
 	drops: [
-		{ type: "block", code: "block/castironoven-cold-east" }
+		{ type: "block", code: "castironoven-cold-east" }
 	],
 	
 	materialDensity: 600,

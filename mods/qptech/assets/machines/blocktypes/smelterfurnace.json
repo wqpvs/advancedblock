@@ -2,7 +2,7 @@
 	code: "smelterfurnace",
 	
 	variantgroups: [
-		{ code:"burnstate", states: ["construct1", "construct2", "construct3", "construct4", "extinct", "lit", "cold"] }
+		{ code:"burnstate", states: ["extinct", "lit", "cold"] }
 	],
 	
 	class: "BlockFirepit",
@@ -96,7 +96,10 @@
 		origin: { x: 0.5, y: 0.0625, z: 0.5 },
 		scale: 1
 	},
+	drops: [
 	
+		{ type: "block", code: "smelterfurnace-extinct" }
+	],
 	materialDensity: 600,
 	sounds: {
 		"place": "block/planks",

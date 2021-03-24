@@ -9,7 +9,7 @@
 		partialAttachable: true,
 		useIce: true,
 		useIceCounter: 10000,
-		preserveBonus: 0.05,
+		preserveBonus: 0.5,
 		inventoryClassName: "chest",
 		
 		types: ["normal-generic"],
