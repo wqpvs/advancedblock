@@ -1,0 +1,9 @@
+{
+  "type": "code",
+  "name": "QPTECH",
+  "description" : "Making your life better thru technology",
+  "author": "WQP",
+  "version": "1.0.4-pre.1",
+  "gameversions": [ "1.14.8" ],
+  "website": ""
+}

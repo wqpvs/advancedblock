@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36C91EE7-484E-4A49-8834-E3502F0FF8CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>qptech</RootNamespace>
+    <AssemblyName>qptech</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\qptech\</OutputPath>
+    <IntermediateOutputPath>..\..\obj\Debug\qptech\</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\qptech\</OutputPath>
+    <IntermediateOutputPath>..\..\obj\Release\qptech\</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VintagestoryAPI">
+      <HintPath>$(AppData)\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>$(AppData)\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>$(AppData)\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSCreativeMod">
+      <HintPath>$(AppData)\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(AppData)\Vintagestory\Lib\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\machines\textures\block\castiron.png" />
+    <Content Include="assets\machines\textures\block\lightblock.png" />
+    <Content Include="assets\machines\textures\block\machinery-bighatch.png" />
+    <Content Include="assets\machines\textures\block\machinery-grate.png" />
+    <Content Include="assets\machines\textures\block\machinery-openhatch.png" />
+    <Content Include="assets\machines\textures\block\machinery-piledown.png" />
+    <Content Include="assets\machines\textures\block\machinery-pileup.png" />
+    <Content Include="assets\machines\textures\block\machinery-tin.png" />
+    <Content Include="assets\machines\textures\block\machinery.png" />
+    <Content Include="assets\machines\textures\block\oak1.png" />
+    <Content Include="assets\machines\textures\block\shinybrass.png" />
+    <Content Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="src\icebox.cs" />
+    <Compile Include="src\moddedfirepit.cs" />
+    <Compile Include="src\firepitstoker.cs" />
+    <Compile Include="src\firepitunloader.cs" />
+    <Compile Include="src\firepitloader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\machines\blocktypes\blocklantern.json" />
+    <None Include="assets\machines\blocktypes\cabinet.json" />
+    <None Include="assets\machines\blocktypes\firepitloader.json" />
+    <None Include="assets\machines\blocktypes\firepitstoker.json" />
+    <None Include="assets\machines\blocktypes\firepitunloader.json" />
+    <None Include="assets\machines\blocktypes\icebox.json" />
+    <None Include="assets\machines\blocktypes\itemhatch.json" />
+    <None Include="assets\machines\blocktypes\machineryblock.json" />
+    <None Include="assets\machines\blocktypes\oven-castiron.json" />
+    <None Include="assets\machines\blocktypes\castironovenlarge.json" />
+    <None Include="assets\machines\blocktypes\sink.json" />
+    <None Include="assets\machines\blocktypes\smelterfurnace.json" />
+    <None Include="assets\machines\config\handbook\qptech.json" />
+    <None Include="assets\machines\lang\en.json" />
+    <None Include="assets\machines\recipes\grid\blocklantern.json" />
+    <None Include="assets\machines\recipes\grid\cabinet-lower-door.json" />
+    <None Include="assets\machines\recipes\grid\cabinet-mid-door.json" />
+    <None Include="assets\machines\recipes\grid\cabinet-upper-door.json" />
+    <None Include="assets\machines\recipes\grid\castironoven.json" />
+    <None Include="assets\machines\recipes\grid\castironovenlarge.json" />
+    <None Include="assets\machines\recipes\grid\firepitloader.json" />
+    <None Include="assets\machines\recipes\grid\firepitstoker.json" />
+    <None Include="assets\machines\recipes\grid\firepitunloader.json" />
+    <None Include="assets\machines\recipes\grid\icebox.json" />
+    <None Include="assets\machines\recipes\grid\itemhatch.json" />
+    <None Include="assets\machines\recipes\grid\machineryblock.json" />
+    <None Include="assets\machines\recipes\grid\sink.json" />
+    <None Include="assets\machines\recipes\grid\smelterfurnace.json" />
+    <None Include="assets\machines\shapes\block\basin.json" />
+    <None Include="assets\machines\shapes\block\BlockLantern.json" />
+    <None Include="assets\machines\shapes\block\cabinet-lower-door.json" />
+    <None Include="assets\machines\shapes\block\cabinet-mid-door.json" />
+    <None Include="assets\machines\shapes\block\cabinet-upper-door.json" />
+    <None Include="assets\machines\shapes\block\castironoven.json" />
+    <None Include="assets\machines\shapes\block\castironovenlarge.json" />
+    <None Include="assets\machines\shapes\block\clayformer-bowl.json" />
+    <None Include="assets\machines\shapes\block\firepit-loader.json" />
+    <None Include="assets\machines\shapes\block\firepit-stoker.json" />
+    <None Include="assets\machines\shapes\block\firepit-unloader.json" />
+    <None Include="assets\machines\shapes\block\itemhatch.json" />
+    <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

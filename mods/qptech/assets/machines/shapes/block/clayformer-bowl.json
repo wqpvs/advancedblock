@@ -1,0 +1,279 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"machinery": "block/machinery"
+	},
+	"elements": [
+		{
+			"name": "Receiving Plate",
+			"from": [ 4.0021, 1.0, 2.0024 ], 
+			"to": [ 14.0021, 4.0, 12.0024 ], 
+			"rotationOrigin": [ 8.0021, 4.0, 7.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 10.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 10.0 ] }
+			}
+		},
+		{
+			"name": "Piston",
+			"from": [ 1.0031, 11.0, 5.0035 ], 
+			"to": [ 5.0031, 15.0, 9.0035 ], 
+			"rotationOrigin": [ 5.0031, 14.0, 10.0035 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 4.0, 4.0 ] }
+			},
+			"children": [
+				{
+					"name": "PUshPlate",
+					"from": [ -3.0, -3.0, -3.0 ], 
+					"to": [ 7.0, 0.0, 7.0 ], 
+					"rotationOrigin": [ 1.0, 0.0, 2.0 ],
+					"faces": {
+						"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+						"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+						"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+						"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 3.0 ] },
+						"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 10.0 ] },
+						"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 10.0, 10.0 ] }
+					},
+					"children": [
+						{
+							"name": "Bowl Mold",
+							"from": [ 2.0, -1.0, 2.0 ], 
+							"to": [ 3.0, 0.0, 8.0 ], 
+							"rotationOrigin": [ 5.999, 2.0, 7.001 ],
+							"faces": {
+								"north": { "texture": "#machinery", "uv": [ 4.5, 6.0, 5.5, 7.0 ] },
+								"east": { "texture": "#machinery", "uv": [ 6.5, 6.5, 12.5, 7.5 ] },
+								"south": { "texture": "#machinery", "uv": [ 7.0, 8.0, 8.0, 9.0 ] },
+								"west": { "texture": "#machinery", "uv": [ 6.0, 6.5, 12.0, 7.5 ] },
+								"up": { "texture": "#machinery", "uv": [ 4.0, 5.0, 5.0, 11.0 ] },
+								"down": { "texture": "#machinery", "uv": [ 5.5, 4.5, 6.5, 10.5 ] }
+							}
+						},
+						{
+							"name": "Bowl Mold13",
+							"from": [ 7.0, -1.0, 2.0 ], 
+							"to": [ 8.0, 0.0, 8.0 ], 
+							"rotationOrigin": [ 10.999, 2.0, 7.001 ],
+							"faces": {
+								"north": { "texture": "#machinery", "uv": [ 4.5, 6.0, 5.5, 7.0 ] },
+								"east": { "texture": "#machinery", "uv": [ 6.5, 6.5, 12.5, 7.5 ] },
+								"south": { "texture": "#machinery", "uv": [ 7.0, 8.0, 8.0, 9.0 ] },
+								"west": { "texture": "#machinery", "uv": [ 6.0, 6.5, 12.0, 7.5 ] },
+								"up": { "texture": "#machinery", "uv": [ 4.0, 5.0, 5.0, 11.0 ] },
+								"down": { "texture": "#machinery", "uv": [ 5.5, 4.5, 6.5, 10.5 ] }
+							}
+						},
+						{
+							"name": "Bowl Mold14",
+							"from": [ 3.0, -1.0, 2.0 ], 
+							"to": [ 7.0, 0.0, 3.0 ], 
+							"rotationOrigin": [ 6.999, 2.0, 7.001 ],
+							"faces": {
+								"north": { "texture": "#machinery", "uv": [ 4.5, 6.0, 8.5, 7.0 ] },
+								"east": { "texture": "#machinery", "uv": [ 6.5, 6.5, 7.5, 7.5 ] },
+								"south": { "texture": "#machinery", "uv": [ 7.0, 8.0, 11.0, 9.0 ] },
+								"west": { "texture": "#machinery", "uv": [ 6.0, 6.5, 7.0, 7.5 ] },
+								"up": { "texture": "#machinery", "uv": [ 4.0, 5.0, 8.0, 6.0 ] },
+								"down": { "texture": "#machinery", "uv": [ 5.5, 4.5, 9.5, 5.5 ] }
+							}
+						},
+						{
+							"name": "Bowl Mold15",
+							"from": [ 3.0, -1.0, 7.0 ], 
+							"to": [ 7.0, 0.0, 8.0 ], 
+							"rotationOrigin": [ 6.999, 2.0, 12.001 ],
+							"faces": {
+								"north": { "texture": "#machinery", "uv": [ 4.5, 6.0, 8.5, 7.0 ] },
+								"east": { "texture": "#machinery", "uv": [ 6.5, 6.5, 7.5, 7.5 ] },
+								"south": { "texture": "#machinery", "uv": [ 7.0, 8.0, 11.0, 9.0 ] },
+								"west": { "texture": "#machinery", "uv": [ 6.0, 6.5, 7.0, 7.5 ] },
+								"up": { "texture": "#machinery", "uv": [ 4.0, 5.0, 8.0, 6.0 ] },
+								"down": { "texture": "#machinery", "uv": [ 5.5, 4.5, 9.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Base",
+			"from": [ 7.0, 0.0, -1.0 ], 
+			"to": [ 23.0, 2.0, 15.0 ], 
+			"rotationOrigin": [ 11.0021, 3.0, 4.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 2.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 2.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 2.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 2.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+			}
+		},
+		{
+			"name": "PistonCover",
+			"from": [ 2.0028, 11.0, 4.0031 ], 
+			"to": [ 8.0028, 15.0, 10.0031 ], 
+			"rotationOrigin": [ 6.0028, 14.0, 9.0031 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 4.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 4.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 4.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 4.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 6.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 6.0, 6.0 ] }
+			}
+		},
+		{
+			"name": "Top",
+			"from": [ 7.0, 15.0, -1.0 ], 
+			"to": [ 23.0, 16.0, 15.0 ], 
+			"rotationOrigin": [ 11.0021, 18.0, 4.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+			}
+		},
+		{
+			"name": "Frame",
+			"from": [ 7.0, 2.0, -1.0 ], 
+			"to": [ 9.0, 15.0, 1.0 ], 
+			"rotationOrigin": [ 11.0021, 20.0, 4.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+			}
+		},
+		{
+			"name": "Frame8",
+			"from": [ -7.0, 2.0, -1.0 ], 
+			"to": [ -5.0, 15.0, 1.0 ], 
+			"rotationOrigin": [ -2.9979, 20.0, 4.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+			}
+		},
+		{
+			"name": "Frame9",
+			"from": [ -7.0, 2.0, 13.0 ], 
+			"to": [ -5.0, 15.0, 15.0 ], 
+			"rotationOrigin": [ -2.9979, 20.0, 18.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+			}
+		},
+		{
+			"name": "Frame10",
+			"from": [ 7.0, 2.0, 13.0 ], 
+			"to": [ 9.0, 15.0, 15.0 ], 
+			"rotationOrigin": [ 11.0021, 20.0, 18.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+			}
+		},
+		{
+			"name": "Receiving Mold",
+			"from": [ 1.0, 4.0, 5.0 ], 
+			"to": [ 5.0, 5.0, 9.0 ], 
+			"rotationOrigin": [ 5.0021, 7.0, 10.0024 ],
+			"rotationY": -89.9802127184967,
+			"faces": {
+				"north": { "texture": "#machinery", "uv": [ 4.5, 6.0, 8.5, 7.0 ] },
+				"east": { "texture": "#machinery", "uv": [ 6.5, 6.5, 10.5, 7.5 ] },
+				"south": { "texture": "#machinery", "uv": [ 7.0, 8.0, 11.0, 9.0 ] },
+				"west": { "texture": "#machinery", "uv": [ 6.0, 6.5, 10.0, 7.5 ] },
+				"up": { "texture": "#machinery", "uv": [ 4.0, 5.0, 8.0, 9.0 ] },
+				"down": { "texture": "#machinery", "uv": [ 5.5, 4.5, 9.5, 8.5 ] }
+			}
+		}
+	],
+	"animations": [
+		{
+			"name": "Animation 1",
+			"code": "Idle",
+			"quantityframes": 30,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+
+			]
+		},
+
+		{
+			"name": "Animation 2",
+			"code": "Press",
+			"quantityframes": 30,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"Piston": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					}
+				},
+				{
+					"frame": 16,
+					"elements": {
+						"Piston": { "offsetX": 0.0, "offsetY": -3.0, "offsetZ": 0.0 }
+					}
+				},
+				{
+					"frame": 21,
+					"elements": {
+						"Piston": { "offsetX": 0.0, "offsetY": -2.0, "offsetZ": 0.0 }
+					}
+				}
+			]
+		}
+	]
+}
