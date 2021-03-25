@@ -74,9 +74,15 @@
     <Content Include="assets\machines\textures\block\oak1.png" />
     <Content Include="assets\machines\textures\block\shinybrass.png" />
     <Content Include="modinfo.json" />
+    <Content Include="src\Power System Notes.txt" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="src\BEEDevice.cs" />
+    <Compile Include="src\BEElectric.cs" />
+    <Compile Include="src\BEEGenerator.cs" />
+    <Compile Include="src\BEEWire.cs" />
+    <Compile Include="src\Electricity.cs" />
     <Compile Include="src\icebox.cs" />
     <Compile Include="src\moddedfirepit.cs" />
     <Compile Include="src\firepitstoker.cs" />
@@ -91,6 +97,7 @@
     <None Include="assets\machines\blocktypes\firepitunloader.json" />
     <None Include="assets\machines\blocktypes\icebox.json" />
     <None Include="assets\machines\blocktypes\itemhatch.json" />
+    <None Include="assets\machines\blocktypes\creativegenerator.json" />
     <None Include="assets\machines\blocktypes\machineryblock.json" />
     <None Include="assets\machines\blocktypes\oven-castiron.json" />
     <None Include="assets\machines\blocktypes\castironovenlarge.json" />

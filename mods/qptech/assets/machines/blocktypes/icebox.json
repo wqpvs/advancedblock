@@ -8,7 +8,7 @@
 	attributes: {
 		partialAttachable: true,
 		useIce: true,
-		useIceCounter: 1,
+		useIceCounter: 2,
 		preserveBonus: 0.5,
 		inventoryClassName: "chest",
 		

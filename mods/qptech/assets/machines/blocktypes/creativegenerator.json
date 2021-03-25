@@ -1,0 +1,25 @@
+{
+	code: "creativegenerator",
+	entityclass: "BEEGenerator",
+	creativeinventory: { "general": ["*"] },
+	attributes: {
+		maxAmps:1,
+		maxVolts:16,
+		capacitance:4,
+		genAmps:1
+	},
+	blockmaterial: "Metal",
+	drawtype: "json",
+	shape: { base: "block/generator" },
+	resistance: 1,
+	sideopaque: {
+		all: false
+	},
+
+	sounds: {
+		"place": "game:block/anvil",
+		"walk": "game:walk/stone"
+	}
+
+
+}

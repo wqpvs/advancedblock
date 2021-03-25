@@ -46,7 +46,8 @@ namespace qptech.src
                 useIce = Block.Attributes["useIce"].AsBool(useIce);
                 //use up an ice block every this many days
                 useIceCounter = Block.Attributes["useIceCounter"].AsDouble(useIceCounter);
-
+                //hacky check for old ice boxes
+                if (useIceCounter >= 14) { useIceCounter = 2; }
             }
 
             protected override void OnTick(float dt)
