@@ -29,7 +29,7 @@ namespace qptech.src
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
-            
+            api.RegisterBlockEntityClass("FirepitStoker", typeof(FirepitStokerEntity));
         }
 
         public class FirepitStokerEntity : BlockEntity

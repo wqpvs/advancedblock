@@ -36,10 +36,6 @@ namespace qptech.src
         {
             base.Start(api);
             api.RegisterBlockEntityClass("FirepitLoader", typeof(FirepitLoaderEntity));
-            api.RegisterBlockEntityClass("ModdedFirepit", typeof(ModdedFirepit.BlockEntityModdedFirepit));
-            api.RegisterBlockEntityClass("IceBoxEntity", typeof(IceBox.BEIceBox));
-            api.RegisterBlockEntityClass("FirepitStoker", typeof(FirepitStoker.FirepitStokerEntity));
-            api.RegisterBlockEntityClass("FirepitUnloader", typeof(FirepitUnloader.FirepitUnloaderEntity));
         }
 
         public class FirepitLoaderEntity : BlockEntity

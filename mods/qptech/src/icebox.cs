@@ -17,7 +17,7 @@ namespace qptech.src
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
-            
+            api.RegisterBlockEntityClass("IceBoxEntity", typeof(BEIceBox));
         }
         public class BEIceBox : BlockEntityGenericTypedContainer
         {
@@ -25,8 +25,10 @@ namespace qptech.src
             bool isChilled = false;
             public bool useIce = true;
             public float preserveBonus = 0.5f;
-            public int useIceCounter = 10000;
-            float chilltick = 0;
+            public double useIceCounter = 10000;
+            double chilltick = 0;
+            double lastdays;
+            
             public override float GetPerishRate()
             {
                 float prate = base.GetPerishRate();
@@ -37,18 +39,29 @@ namespace qptech.src
             public override void Initialize(ICoreAPI api)
             {
                 base.Initialize(api);
+                lastdays = Api.World.Calendar.TotalDays;
+                //bonus to apply if block is chilled
                 preserveBonus = Block.Attributes["preserveBonus"].AsFloat(preserveBonus);
+                //whether to check for and use up ice if chilled
                 useIce = Block.Attributes["useIce"].AsBool(useIce);
-                useIceCounter = Block.Attributes["useIceCounter"].AsInt(useIceCounter);
+                //use up an ice block every this many days
+                useIceCounter = Block.Attributes["useIceCounter"].AsDouble(useIceCounter);
 
             }
 
             protected override void OnTick(float dt)
             {
                 base.OnTick(dt);
+                
                 if (!useIce) { isChilled = true;return; }
                 isChilled = false;
                 ItemSlot chillslot = null;
+                //how many days have passed?
+                double deltaDays = Api.World.Calendar.TotalDays - lastdays;
+                if (deltaDays < 0) { deltaDays = 0; }
+                lastdays = Api.World.Calendar.TotalDays;
+                //increase ice use countdown clock by how much time has passed
+                chilltick += deltaDays;
                 foreach (ItemSlot slot in Inventory)
                 {
                    if (slot.Itemstack == null) { continue; }
@@ -57,7 +70,7 @@ namespace qptech.src
                     {
                         isChilled = true;
                         chillslot = slot;
-                        chilltick+=dt;
+                        chilltick+=deltaDays;
                         continue;
                     }
 
@@ -65,7 +78,9 @@ namespace qptech.src
                 if (!isChilled) { chilltick = 0; return; }
                 if (chilltick>=useIceCounter)
                 {
-                    chillslot.TakeOut(1);
+                    int qtytotake = (int)(chilltick / useIceCounter);
+                    chillslot.TakeOut(qtytotake);//note this may still result in "Free" freezer time
+                    chilltick = 0;
                 }
             }
 

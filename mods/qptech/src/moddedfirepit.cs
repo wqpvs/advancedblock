@@ -8,17 +8,18 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
-using Vintagestory.GameContent;
-namespace qptech.src
+
+namespace Vintagestory.GameContent
 {
-    public class ModdedFirepit : ModSystem
+
+    public class ModdedFirePit : ModSystem
     {
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
-            
+            api.RegisterBlockEntityClass("ModdedFirepit", typeof(BlockEntityModdedFirepit));
         }
-    
+
         public class BlockEntityModdedFirepit : BlockEntityFirepit
         {
             public float heatMod=1f;

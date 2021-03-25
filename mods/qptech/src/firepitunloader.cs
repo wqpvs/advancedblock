@@ -26,7 +26,7 @@ namespace qptech.src
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
-           
+            api.RegisterBlockEntityClass("FirepitUnloader", typeof(FirepitUnloaderEntity));
         }
 
         public class FirepitUnloaderEntity : BlockEntity
