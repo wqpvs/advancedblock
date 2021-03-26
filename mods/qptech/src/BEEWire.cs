@@ -7,7 +7,14 @@ using Vintagestory.API.Common;
 
 namespace qptech.src
 {
-    class BEEWire
+    class BEEWire:BEElectric
     {
+        public override void OnTick(float par)
+        {
+            base.OnTick(par);
+            
+        }
+
+
     }
 }

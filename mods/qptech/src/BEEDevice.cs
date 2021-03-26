@@ -16,7 +16,7 @@ namespace qptech.src
         public bool isPowered { get { return capacitor >= requiredAmps; } }
         public override void OnTick(float par)
         {
-            //override as we don't want to generate power
+            //override as we don't want to transmit power
             UsePower();
         }
         public override void Initialize(ICoreAPI api)
