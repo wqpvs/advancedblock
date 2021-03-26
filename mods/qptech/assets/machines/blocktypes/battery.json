@@ -1,18 +1,16 @@
 {
-	code: "creativegenerator",
+	code: "battery-primitive",
 	class: "ElectricalBlock",
-	entityclass: "BEEGenerator",
-	entityBehaviors: [{ name: "Animatable" }],
+	entityclass: "BEEWire",
 	creativeinventory: { "general": ["*"] },
 	attributes: {
 		maxAmps:1,
 		maxVolts:16,
-		capacitance:4,
-		genAmps:1
+		capacitance:24
 	},
 	blockmaterial: "Metal",
 	drawtype: "json",
-	shape: { base: "block/generator" },
+	shape: { base: "block/battery-primitive" },
 	resistance: 1,
 	sideopaque: {
 		all: false

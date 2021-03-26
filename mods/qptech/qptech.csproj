@@ -82,6 +82,7 @@
     <Compile Include="src\BEElectric.cs" />
     <Compile Include="src\BEEGenerator.cs" />
     <Compile Include="src\BEEWire.cs" />
+    <Compile Include="src\ElectricalBlock.cs" />
     <Compile Include="src\Electricity.cs" />
     <Compile Include="src\icebox.cs" />
     <Compile Include="src\moddedfirepit.cs" />
@@ -92,6 +93,7 @@
   <ItemGroup>
     <None Include="assets\machines\blocktypes\blocklantern.json" />
     <None Include="assets\machines\blocktypes\cabinet.json" />
+    <None Include="assets\machines\blocktypes\battery.json" />
     <None Include="assets\machines\blocktypes\firepitloader.json" />
     <None Include="assets\machines\blocktypes\firepitstoker.json" />
     <None Include="assets\machines\blocktypes\firepitunloader.json" />
@@ -130,6 +132,7 @@
     <None Include="assets\machines\shapes\block\firepit-loader.json" />
     <None Include="assets\machines\shapes\block\firepit-stoker.json" />
     <None Include="assets\machines\shapes\block\firepit-unloader.json" />
+    <None Include="assets\machines\shapes\block\generator.json" />
     <None Include="assets\machines\shapes\block\itemhatch.json" />
     <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
   </ItemGroup>
