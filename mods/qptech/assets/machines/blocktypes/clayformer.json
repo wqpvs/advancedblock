@@ -1,0 +1,27 @@
+{
+	code: "clayformer",
+	class: "ElectricalBlock",
+	entityclass: "BEEDevice",
+	entityBehaviors: [{ name: "Animatable" }],
+	creativeinventory: { "general": ["*"] },
+	attributes: {
+		maxAmps:2,
+		maxVolts:16,
+		capacitance:2,
+		requiredAmps:1
+	},
+	blockmaterial: "Metal",
+	drawtype: "json",
+	shape: { base: "block/clayformer-bowl" },
+	resistance: 1,
+	sideopaque: {
+		all: false
+	},
+
+	sounds: {
+		"place": "game:block/anvil",
+		"walk": "game:walk/stone"
+	}
+
+
+}

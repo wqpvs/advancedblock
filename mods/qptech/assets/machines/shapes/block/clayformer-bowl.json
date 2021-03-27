@@ -249,11 +249,11 @@
 		},
 
 		{
-			"name": "Animation 2",
-			"code": "Press",
+			"name": "process",
+			"code": "process",
 			"quantityframes": 30,
 			"onActivityStopped": "Rewind",
-			"onAnimationEnd": "Repeat",
+			"onAnimationEnd": "Stop",
 			"keyframes": [
 				{
 					"frame": 0,

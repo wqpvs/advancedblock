@@ -33,11 +33,12 @@ namespace qptech.src
         }
         public override void OnTick(float par)
         {
+            base.OnTick(par);
             if (isOn) {
                 GeneratePower(); //Create power packets if possible, base.Ontick will handle distribution attempts
                 
             }
-            base.OnTick(par);
+            
         }
         //Attempts to generate power
         public virtual void GeneratePower()

@@ -177,5 +177,18 @@ namespace qptech.src
             return needs;
             
         }
+
+        public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
+        {
+            base.FromTreeAttributes(tree, worldAccessForResolve);
+            capacitor = tree.GetInt("capacitor");
+            isOn = tree.GetBool("isOn");
+        }
+        public override void ToTreeAttributes(ITreeAttribute tree)
+        {
+            base.ToTreeAttributes(tree);
+            tree.SetInt("capacitor", capacitor);
+            tree.SetBool("isOn", isOn);
+        }
     }
 }
