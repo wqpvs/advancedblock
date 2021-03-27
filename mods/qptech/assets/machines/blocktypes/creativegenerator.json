@@ -5,10 +5,10 @@
 	entityBehaviors: [{ name: "Animatable" }],
 	creativeinventory: { "general": ["*"] },
 	attributes: {
-		maxAmps:1,
+		maxAmps:2,
 		maxVolts:16,
 		capacitance:4,
-		genAmps:1
+		genAmps:2
 	},
 	blockmaterial: "Metal",
 	drawtype: "json",

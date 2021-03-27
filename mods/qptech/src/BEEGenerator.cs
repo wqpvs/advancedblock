@@ -86,5 +86,9 @@ namespace qptech.src
 
             }
         }
+        public override int NeedPower()
+        {
+            return 0;
+        }
     }
 }

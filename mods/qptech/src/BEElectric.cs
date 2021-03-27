@@ -126,14 +126,27 @@ namespace qptech.src
             if (connections.Count==0) { return; }
             
             int ampsMoved = 0;
-                        
+            //Build a list of power demands (want to send from highest demand to lowest)
+            //TODO could probably all be compressed in to one linq query
+            Dictionary<BEElectric,int> powerRequests = new Dictionary< BEElectric,int>();
             foreach (BEElectric bee in connections)
             {
-                if (capacitor == 0) { break; } //no power to give 
                 if (bee == null) { continue; }
-                if (usedconnections.Contains(bee)) { continue; } //already traded with this bee
+                if (usedconnections.Contains(bee)) { continue; }
+                if (bee.NeedPower() > 0) { powerRequests.Add(bee, bee.NeedPower()); }
+            }
+            if (powerRequests.Count == 0) { return; }
+            var sortedDict = from entry in powerRequests orderby entry.Value descending select entry;
+
+            foreach (KeyValuePair<BEElectric,int>kvp in sortedDict)
+            {
+                
+                if (capacitor == 0) { break; } //no power to give 
+                if (kvp.Key == null) { continue; }
+                //if (kvp.Value > capacitor) { continue; } //Connection has more power than me skip
+                if (usedconnections.Contains(kvp.Key)) { continue; } //already traded with this bee
                 int powerOffer = Math.Min(capacitor, MaxAmps); //offer as much as possible 
-                int powerUsed = bee.ReceivePacketOffer(this,MaxVolts, powerOffer);
+                int powerUsed = kvp.Key.ReceivePacketOffer(this,MaxVolts, powerOffer);
                 ampsMoved += powerUsed;
                 capacitor -= powerUsed;
                 
@@ -150,6 +163,19 @@ namespace qptech.src
         public virtual void TogglePower()
         {
             isOn = !isOn;
+        }
+
+        public virtual int NeedPower()
+        {
+            int needs = 0;
+            if (isOn)
+            {
+                needs = capacitance - capacitor;
+                if (needs < 0) { needs = 0; }
+                needs = Math.Min(needs, MaxAmps);
+            }
+            return needs;
+            
         }
     }
 }

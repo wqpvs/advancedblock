@@ -91,6 +91,7 @@
     <Compile Include="src\firepitloader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\machines\blocktypes\wireplate.json" />
     <None Include="assets\machines\blocktypes\blocklantern.json" />
     <None Include="assets\machines\blocktypes\cabinet.json" />
     <None Include="assets\machines\blocktypes\battery.json" />
@@ -122,6 +123,7 @@
     <None Include="assets\machines\recipes\grid\sink.json" />
     <None Include="assets\machines\recipes\grid\smelterfurnace.json" />
     <None Include="assets\machines\shapes\block\basin.json" />
+    <None Include="assets\machines\shapes\block\battery-primitive.json" />
     <None Include="assets\machines\shapes\block\BlockLantern.json" />
     <None Include="assets\machines\shapes\block\cabinet-lower-door.json" />
     <None Include="assets\machines\shapes\block\cabinet-mid-door.json" />
@@ -135,6 +137,7 @@
     <None Include="assets\machines\shapes\block\generator.json" />
     <None Include="assets\machines\shapes\block\itemhatch.json" />
     <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
+    <None Include="assets\machines\shapes\block\wireplate-tin-2a.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
