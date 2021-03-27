@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\game\sounds\doorslide.ogg" />
     <Content Include="assets\machines\textures\block\castiron.png" />
     <Content Include="assets\machines\textures\block\lightblock.png" />
     <Content Include="assets\machines\textures\block\machinery-bighatch.png" />

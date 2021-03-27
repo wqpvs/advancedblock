@@ -14,6 +14,7 @@ namespace qptech.src
         //how many power packets we can generate - will see if every more than one
         protected int genAmps = 1;
         Vec3d posvec;
+        bool animInit = false;
         public override void Initialize(ICoreAPI api)
         {
             base.Initialize(api);
@@ -30,6 +31,7 @@ namespace qptech.src
                 animUtil.StartAnimation(new AnimationMetaData() { Animation = "run", Code = "run", AnimationSpeed = 1, EaseInSpeed = 1, EaseOutSpeed = 1, Weight = 1, BlendMode = EnumAnimationBlendMode.Average });
 
             }
+            animInit = false;
         }
         public override void OnTick(float par)
         {
@@ -74,10 +76,15 @@ namespace qptech.src
             isOn = !isOn;
             if (Api.World.Side == EnumAppSide.Client&&animUtil!=null)
             {
-                if (isOn)
+                if (!animInit)
                 {
                     float rotY = Block.Shape.rotateY;
                     animUtil.InitializeAnimator("run", new Vec3f(0, rotY, 0));
+                    animInit = true;
+                }
+                if (isOn)
+                {
+                    
                     animUtil.StartAnimation(new AnimationMetaData() { Animation = "run", Code = "run", AnimationSpeed = 1, EaseInSpeed = 1, EaseOutSpeed = 1, Weight = 1, BlendMode = EnumAnimationBlendMode.Average });
                 }
                 else

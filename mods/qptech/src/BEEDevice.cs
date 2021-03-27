@@ -31,9 +31,11 @@ namespace qptech.src
             //override as we don't want to transmit power
             UsePower();
         }
+        bool animInit = false;
         public override void Initialize(ICoreAPI api)
         {
             base.Initialize(api);
+            animInit = false;
             //if (Block == null || Block.Attributes == null) { return; }
             if (Block.Attributes != null) { requiredAmps = Block.Attributes["requiredAmps"].AsInt(requiredAmps); }
 
@@ -63,14 +65,21 @@ namespace qptech.src
                 
                 if (Api.World.Side == EnumAppSide.Client && animUtil != null)
                 {
-                    float rotY = Block.Shape.rotateY;
-                    animUtil.InitializeAnimator("process", new Vec3f(0, rotY, 0));
+                    if (!animInit)
+                    {
+                        float rotY = Block.Shape.rotateY;
+                        animUtil.InitializeAnimator("process", new Vec3f(0, rotY, 0));
+                        animInit = true;
+                    }
                     animUtil.StartAnimation(new AnimationMetaData() {
                         Animation = "process", Code = "process",
                         AnimationSpeed = 1f, EaseInSpeed = 1, EaseOutSpeed = 1,
                         Weight = 1, BlendMode = EnumAnimationBlendMode.Add
                     });
+                    Api.World.PlaySoundAt(new AssetLocation("sounds/doorslide"), Pos.X, Pos.Y, Pos.Z, null, false, 8, 1);
                 }
+                
+                //sounds/blocks/doorslide.ogg
                 DoDeviceProcessing();
             }
             else { DoFailedStart(); }
