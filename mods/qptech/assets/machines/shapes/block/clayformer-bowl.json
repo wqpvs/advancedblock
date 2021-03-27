@@ -238,21 +238,10 @@
 	],
 	"animations": [
 		{
-			"name": "Animation 1",
-			"code": "Idle",
-			"quantityframes": 30,
-			"onActivityStopped": "Rewind",
-			"onAnimationEnd": "Repeat",
-			"keyframes": [
-
-			]
-		},
-
-		{
 			"name": "process",
 			"code": "process",
 			"quantityframes": 30,
-			"onActivityStopped": "Rewind",
+			"onActivityStopped": "Stop",
 			"onAnimationEnd": "Stop",
 			"keyframes": [
 				{

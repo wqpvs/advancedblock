@@ -15,7 +15,7 @@ namespace qptech.src
     class BEEDevice:BEElectric
     {
         //How many amps to run at maxVolts?
-        public enum enDeviceState { IDLE, RUNNING }
+        public enum enDeviceState { IDLE, RUNNING, WARMUP }
         
         protected int requiredAmps = 1;     //how many amps to run
         protected int processingTicks = 30; //how many ticks for process to run
@@ -23,7 +23,7 @@ namespace qptech.src
         public int RequiredAmps { get { return requiredAmps; } }
         public bool isPowered { get { return capacitor >= requiredAmps; } }
 
-        protected enDeviceState deviceState = enDeviceState.IDLE;
+        protected enDeviceState deviceState = enDeviceState.WARMUP;
         public enDeviceState DeviceState { get { return deviceState; } }
         public override void OnTick(float par)
         {
@@ -45,6 +45,11 @@ namespace qptech.src
             {
                 DoDeviceStart();
             }
+            else if (deviceState == enDeviceState.WARMUP)
+            {
+                tickCounter++;
+                if (tickCounter == 10) { tickCounter = 0;deviceState = enDeviceState.IDLE; }
+            }
             else { DoDeviceProcessing(); }
         }
 
@@ -62,7 +67,7 @@ namespace qptech.src
                     animUtil.InitializeAnimator("process", new Vec3f(0, rotY, 0));
                     animUtil.StartAnimation(new AnimationMetaData() {
                         Animation = "process", Code = "process",
-                        AnimationSpeed = 0.5f, EaseInSpeed = 0.1f, EaseOutSpeed = 0.1f,
+                        AnimationSpeed = 0.5f, EaseInSpeed = 1, EaseOutSpeed = 1,
                         Weight = 1, BlendMode = EnumAnimationBlendMode.Average
                     });
                 }
@@ -100,10 +105,10 @@ namespace qptech.src
         protected virtual void DoDeviceComplete()
         {
             deviceState = enDeviceState.IDLE;
-            if (Api.World.Side == EnumAppSide.Client && animUtil != null)
+            /*if (Api.World.Side == EnumAppSide.Client && animUtil != null)
             {
                 animUtil.StopAnimation("process");
-            }
+            }*/
         }
 
         public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
