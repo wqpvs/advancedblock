@@ -105,10 +105,16 @@ namespace qptech.src
         protected virtual void DoDeviceComplete()
         {
             deviceState = enDeviceState.IDLE;
-            /*if (Api.World.Side == EnumAppSide.Client && animUtil != null)
+            Block block = Api.World.GetBlock(new AssetLocation("game:bowl-raw"));
+            ItemStack outputStack = new ItemStack(block);
+
+            Vec3d pos = Pos.ToVec3d();
+            Api.World.SpawnItemEntity(outputStack, pos);
+            //Api.World.SpawnItemEntity(grindedStack, this.Pos.ToVec3d().Add(0.5 + face.Normalf.X * 0.7, 0.75, 0.5 + face.Normalf.Z * 0.7), new Vec3d(face.Normalf.X * 0.02f, 0, face.Normalf.Z * 0.02f));
+            if (Api.World.Side == EnumAppSide.Client && animUtil != null)
             {
                 animUtil.StopAnimation("process");
-            }*/
+            }
         }
 
         public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
