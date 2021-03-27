@@ -261,7 +261,24 @@
 					"elements": {
 						"Piston": { "offsetX": 0.0, "offsetY": -2.0, "offsetZ": 0.0 }
 					}
+				},
+				{
+					"frame": 29,
+					"elements": {
+						"Piston": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					}
 				}
+			]
+		},
+
+		{
+			"name": "idle",
+			"code": "idle",
+			"quantityframes": 30,
+			"onActivityStopped": "EaseOut",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+
 			]
 		}
 	]
