@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="src\BEEAssembler.cs" />
     <Compile Include="src\BEEDevice.cs" />
     <Compile Include="src\BEElectric.cs" />
     <Compile Include="src\BEEGenerator.cs" />

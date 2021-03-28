@@ -12,14 +12,15 @@ using Vintagestory.GameContent;
 namespace qptech.src
 {
     //Device to use up electricity
+    //intermediate class, shouldn't generally be used
     class BEEDevice:BEElectric
     {
         //How many amps to run at maxVolts?
-        public enum enDeviceState { IDLE, RUNNING, WARMUP }
+        public enum enDeviceState { IDLE, RUNNING, WARMUP, MATERIALHOLD, ERROR }
         
         protected int requiredAmps = 1;     //how many amps to run
         protected int processingTicks = 30; //how many ticks for process to run
-        int tickCounter = 0;
+        protected int tickCounter = 0;
         public int RequiredAmps { get { return requiredAmps; } }
         public bool isPowered { get { return capacitor >= requiredAmps; } }
 
@@ -27,18 +28,18 @@ namespace qptech.src
         public enDeviceState DeviceState { get { return deviceState; } }
         public override void OnTick(float par)
         {
-            
+            base.OnTick(par);
             //override as we don't want to transmit power
             UsePower();
         }
-        bool animInit = false;
+        protected bool animInit = false;
         public override void Initialize(ICoreAPI api)
         {
             base.Initialize(api);
             animInit = false;
             //if (Block == null || Block.Attributes == null) { return; }
             if (Block.Attributes != null) { requiredAmps = Block.Attributes["requiredAmps"].AsInt(requiredAmps); }
-
+            distributionFaces = new List<BlockFacing>(); //no distribution for us!
         }
         protected virtual void UsePower()
         {
@@ -140,7 +141,7 @@ namespace qptech.src
             tree.SetInt("tickCounter", tickCounter);
             tree.SetInt("deviceState", (int)deviceState);
         }
-        BlockEntityAnimationUtil animUtil
+        protected BlockEntityAnimationUtil animUtil
         {
             get
             {
@@ -149,6 +150,7 @@ namespace qptech.src
                 return GetBehavior<BEBehaviorAnimatable>().animUtil;
             }
         }
+        
         public override void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
         {
             base.GetBlockInfo(forPlayer, dsc);

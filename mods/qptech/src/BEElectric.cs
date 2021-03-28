@@ -19,75 +19,122 @@ namespace qptech.src
         protected int capacitance=1;//how many packets it can store
         protected  int capacitor;  //packets currently stored (the ints store the volts for each packet)
         protected bool isOn=true;        //if it's not on it won't do any power processing
-        protected List<BEElectric>connections; //what we are connected to
+        protected List<BEElectric>outputConnections; //what we are connected to
+        protected List<BEElectric>inputConnections; //what we are connected to
         protected List<BEElectric> usedconnections; //track if already traded with in a given turn
+        protected List<BlockFacing> distributionFaces; //what faces are valid for distributing power
+        protected List<BlockFacing> receptionFaces; //what faces are valid for receiving power
         public int MaxAmps { get { return maxAmps; } }
         public int MaxVolts { get { return maxVolts; } }
 
         public bool IsPowered { get { return false; } }
         public bool IsOn { get { return isOn; } }
-        
+        protected bool notfirsttick = false;
        
 
         public override void Initialize(ICoreAPI api)
         {
             base.Initialize(api);
+            //TODO need to load list of valid faces from the JSON for this stuff
+            distributionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
+            receptionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
             if (Electricity.electricalDevices == null) { Electricity.electricalDevices = new List<BEElectric>(); }
             Electricity.electricalDevices.Add(this);
             
-            if (connections == null) { connections = new List<BEElectric>(); }
+            if (outputConnections == null) { outputConnections = new List<BEElectric>(); }
+            if (inputConnections == null) { inputConnections = new List<BEElectric>(); }
             if (Block.Attributes == null) { api.World.Logger.Error("ERROR BEE INITIALIZE HAS NO BLOCK");return; }
             maxAmps = Block.Attributes["maxAmps"].AsInt(maxAmps);
             maxVolts = Block.Attributes["maxVolts"].AsInt(maxVolts);
             capacitance = Block.Attributes["capacitance"].AsInt(capacitance);
-            if (connections == null) { connections = new List<BEElectric>(); }
+            
             RegisterGameTickListener(OnTick, 100);
-            FindConnections();
+            notfirsttick = false;
         }
-        //look for neighbors to connect to - TODO add a face check
-        BlockEntity checkblock;
+        
         public virtual void FindConnections()
         {
-            //BlockFacing probably has useful stuff to do this right
-            BlockPos[] checksides = {
-                    new BlockPos(Pos.X - 1, Pos.Y, Pos.Z),
-                    new BlockPos(Pos.X+1,Pos.Y,Pos.Z),
-                    new BlockPos(Pos.X, Pos.Y, Pos.Z+1),
-                    new BlockPos(Pos.X, Pos.Y, Pos.Z-1) };
+            FindInputConnections();
+            FindOutputConnections();
 
-            foreach (BlockPos checkPos in checksides)
+        }
+        protected virtual void FindInputConnections()
+        {
+            //BlockFacing probably has useful stuff to do this right
+            
+            foreach (BlockFacing bf in receptionFaces)
             {
-                checkblock = Api.World.BlockAccessor.GetBlockEntity(checkPos);
-                 var bee = checkblock as BEElectric;
-                 if (bee == null) { continue; }
-                 if (bee.TryConnection(this)&&!connections.Contains(bee)) { connections.Add(bee); MarkDirty(); }
+
+
+                BlockPos bp = Pos.Copy().Offset(bf);
+                
+                BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
+                var bee = checkblock as BEElectric;
+                if (bee == null) { continue; }
+                if (bee.TryOutputConnection(this) && !inputConnections.Contains(bee)) { inputConnections.Add(bee); }
+
+            }
+        }
+
+        protected virtual void FindOutputConnections()
+        {
+            //BlockFacing probably has useful stuff to do this right
+            
+            foreach (BlockFacing bf in distributionFaces)
+            {
+                BlockPos bp = Pos.Copy().Offset(bf);
+                BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
+                var bee = checkblock as BEElectric;
+                if (bee == null) { continue; }
+                if (bee.TryInputConnection(this) && !outputConnections.Contains(bee)) { outputConnections.Add(bee); }
 
             }
         }
         
         //Allow devices to connection to each other
         //TODO add way to connect valid faces, especially if placed in different directions
-        public virtual bool TryConnection(BEElectric connectto)
+        public virtual bool TryInputConnection(BEElectric connectto)
         {
-            if (connections == null) { connections = new List<BEElectric>(); }
-            if (!connections.Contains(connectto)) { connections.Add(connectto); MarkDirty(); }
+            if (inputConnections == null) { inputConnections = new List<BEElectric>(); }
+            Vec3d vector = connectto.Pos.ToVec3d() - Pos.ToVec3d();
+            BlockFacing bf = BlockFacing.FromVector(vector.X,vector.Y,vector.Z);
+            if (receptionFaces == null) { return false; }
+            if (!receptionFaces.Contains(bf)) { return false; }
+            if (!inputConnections.Contains(connectto)) { inputConnections.Add(connectto); MarkDirty(); }
+            return true;
+        }
+        public virtual bool TryOutputConnection(BEElectric connectto)
+        {
+            if (outputConnections == null) { outputConnections = new List<BEElectric>(); }
+            Vec3d vector = connectto.Pos.ToVec3d() - Pos.ToVec3d();
+            BlockFacing bf = BlockFacing.FromVector(vector.X, vector.Y, vector.Z);
+            if (distributionFaces == null) { return false; }
+            if (!distributionFaces.Contains(bf)) { return false; }
+            if (!outputConnections.Contains(connectto)) { outputConnections.Add(connectto); MarkDirty(); }
             return true;
         }
 
         //Tell a connection to remove itself
         public virtual void RemoveConnection(BEElectric disconnect)
         {
-            connections.Remove(disconnect);
+            inputConnections.Remove(disconnect);
+            outputConnections.Remove(disconnect);
         }
 
         public override void OnBlockBroken()
         {
             base.OnBlockBroken();
             Electricity.electricalDevices.Remove(this);
-            foreach (BEElectric bee in connections) { bee.RemoveConnection(this); }
+            foreach (BEElectric bee in inputConnections) { bee.RemoveConnection(this); }
+            foreach (BEElectric bee in outputConnections) { bee.RemoveConnection(this); }
         }
         public virtual void OnTick(float par)
         {
+            if (!notfirsttick)
+            {
+                FindConnections();
+                notfirsttick = true;
+            }
             if (isOn) { DistributePower(); }
             usedconnections = new List<BEElectric>(); //clear record of connections for next tick
         }
@@ -98,6 +145,7 @@ namespace qptech.src
             dsc.AppendLine("   On:" + isOn.ToString());
             dsc.AppendLine("Volts:"+MaxVolts.ToString()+"V");
             dsc.AppendLine("Power:" + capacitor.ToString() + "/" + capacitance.ToString());
+            dsc.AppendLine("IN:" + inputConnections.Count.ToString() + " OUT:" + outputConnections.Count.ToString());
         }
         
         //Used for other power devices to offer this device some energy
@@ -122,14 +170,14 @@ namespace qptech.src
             if (usedconnections == null) { usedconnections = new List<BEElectric>(); }
             if (!isOn) { return; } //can't generator power if off
             
-            if (connections == null) { return; } //nothing hooked up
-            if (connections.Count==0) { return; }
+            if (outputConnections == null) { return; } //nothing hooked up
+            if (outputConnections.Count==0) { return; }
             
             int ampsMoved = 0;
             //Build a list of power demands (want to send from highest demand to lowest)
             //TODO could probably all be compressed in to one linq query
             Dictionary<BEElectric,int> powerRequests = new Dictionary< BEElectric,int>();
-            foreach (BEElectric bee in connections)
+            foreach (BEElectric bee in outputConnections)
             {
                 if (bee == null) { continue; }
                 if (usedconnections.Contains(bee)) { continue; }
