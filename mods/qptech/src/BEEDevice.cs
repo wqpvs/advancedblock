@@ -17,7 +17,7 @@ namespace qptech.src
     {
         //How many amps to run at maxVolts?
         public enum enDeviceState { IDLE, RUNNING, WARMUP, MATERIALHOLD, ERROR }
-        
+       
         protected int requiredAmps = 1;     //how many amps to run
         protected int processingTicks = 30; //how many ticks for process to run
         protected int tickCounter = 0;
@@ -44,7 +44,7 @@ namespace qptech.src
         protected virtual void UsePower()
         {
             if (!isOn) { return; }
-            if (DeviceState == enDeviceState.IDLE)
+            if (DeviceState == enDeviceState.IDLE||DeviceState==enDeviceState.MATERIALHOLD)
             {
                 DoDeviceStart();
             }

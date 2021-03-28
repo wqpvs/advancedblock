@@ -1,7 +1,7 @@
 {
 	code: "clayformer",
 	class: "ElectricalBlock",
-	entityclass: "BEEDevice",
+	entityclass: "BEEAssembler",
 	entityBehaviors: [{ name: "Animatable" }],
 	creativeinventory: { "general": ["*"] },
 	attributes: {
