@@ -37,6 +37,9 @@ namespace qptech.src
                 
                 outputFace = BlockFacing.FromCode(Block.Attributes["outputFace"].AsString("down"));
                 
+                rmInputFace = OrientFace(Block.Code.ToString(), rmInputFace);
+                outputFace = OrientFace(Block.Code.ToString(), outputFace);
+
             }
             //TEMP CODE TO ADD faces, should be loaded from attributes
             //rmInputFace.Add(BlockFacing.UP);

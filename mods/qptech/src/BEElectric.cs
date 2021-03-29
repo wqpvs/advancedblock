@@ -36,8 +36,7 @@ namespace qptech.src
         {
             base.Initialize(api);
             //TODO need to load list of valid faces from the JSON for this stuff
-            distributionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
-            receptionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
+            SetupIOFaces();
             if (Electricity.electricalDevices == null) { Electricity.electricalDevices = new List<BEElectric>(); }
             Electricity.electricalDevices.Add(this);
             
@@ -51,7 +50,41 @@ namespace qptech.src
             RegisterGameTickListener(OnTick, 100);
             notfirsttick = false;
         }
-        
+
+        //attempt to load power distribution and reception faces from attributes, and orient them to this blocks face if necessary
+        public virtual void SetupIOFaces()
+        {
+             string[] cfaces= { };
+            
+            if (Block.Attributes == null)
+            {
+                distributionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
+                receptionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>();
+                return;
+            }
+            if (!Block.Attributes.KeyExists("receptionFaces")){ receptionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>(); }
+            else
+            {
+                cfaces = Block.Attributes["receptionFaces"].AsArray<string>(cfaces);
+                receptionFaces = new List<BlockFacing>();
+                foreach (string f in cfaces)
+                {
+                    receptionFaces.Add(OrientFace(Block.Code.ToString(),BlockFacing.FromCode(f)));
+                }
+            }
+            
+            if (!Block.Attributes.KeyExists("distributionFaces")) { distributionFaces = BlockFacing.HORIZONTALS.ToList<BlockFacing>(); }
+            else
+            {
+                cfaces = Block.Attributes["distributionFaces"].AsArray<string>(cfaces);
+                distributionFaces = new List<BlockFacing>();
+                foreach (string f in cfaces)
+                {
+                    distributionFaces.Add(OrientFace(Block.Code.ToString(), BlockFacing.FromCode(f)));
+                }
+            }
+            
+        }
         public virtual void FindConnections()
         {
             FindInputConnections();
@@ -237,6 +270,27 @@ namespace qptech.src
             base.ToTreeAttributes(tree);
             tree.SetInt("capacitor", capacitor);
             tree.SetBool("isOn", isOn);
+        }
+
+        //Take a block code (that ends in a cardinal direction) and a BlockFacing,
+        //and rotate it, returning the appropriate blockfacing
+        public static BlockFacing OrientFace(string checkBlockCode, BlockFacing toChange)
+        {
+
+            if (checkBlockCode.EndsWith("east"))
+            {
+
+                toChange = toChange.GetCW();
+            }
+            else if (checkBlockCode.EndsWith("south"))
+            {
+                toChange = toChange.GetCW().GetCW();
+            }
+            else if (checkBlockCode.EndsWith("west"))
+            {
+                toChange = toChange.GetCCW();
+            }
+            return toChange;
         }
     }
 }

@@ -157,5 +157,7 @@ namespace qptech.src
             dsc.AppendLine("Stat :" + DeviceState.ToString());
             dsc.AppendLine("Prog :" + tickCounter.ToString() + "/" + processingTicks.ToString());
         }
+
+        
     }
 }
