@@ -20,19 +20,27 @@ namespace qptech.src
         protected string ingredient = "game:clay-blue";
         protected int inputQuantity = 4;
         protected int internalQuantity = 0; //will store ingredients virtually
-        protected List<BlockFacing> rmInputFaces; //what faces will be checked for input containers
-        protected List<BlockFacing> rmOutputFaces; //what faces will be checked for output containers
+        protected BlockFacing rmInputFace; //what faces will be checked for input containers
+        protected BlockFacing outputFace; //what faces will be checked for output containers
+        protected BlockFacing recipeFace; //what face will be used to look for a container with the model object
          DummyInventory dummy;
          
         /// </summary>
         public override void Initialize(ICoreAPI api)
         {
             base.Initialize(api);
-            rmInputFaces = new List<BlockFacing>();
-            rmOutputFaces = new List<BlockFacing>();
+            
+            
+            if (Block.Attributes != null) {
+                //requiredAmps = Block.Attributes["requiredAmps"].AsInt(requiredAmps);
+                rmInputFace = BlockFacing.FromCode(Block.Attributes["inputFace"].AsString("up"));
+                
+                outputFace = BlockFacing.FromCode(Block.Attributes["outputFace"].AsString("down"));
+                
+            }
             //TEMP CODE TO ADD faces, should be loaded from attributes
-            rmInputFaces.Add(BlockFacing.UP);
-            rmOutputFaces.Add(BlockFacing.DOWN);
+            //rmInputFace.Add(BlockFacing.UP);
+            //outputFaces.Add(BlockFacing.DOWN);
             dummy = new DummyInventory(api);
             
           
@@ -88,28 +96,24 @@ namespace qptech.src
            
             ItemStack outputStack = new ItemStack(outputItem, outputQuantiy);
             dummy[0].Itemstack = outputStack;
-            
-            //Test for available storage
-            
-            foreach (BlockFacing bf in rmOutputFaces)
+  
+            BlockPos bp = Pos.Copy().Offset(outputFace);
+            BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
+            var outputContainer = checkblock as BlockEntityContainer;
+            if (outputContainer != null)
             {
-                
-                BlockPos bp = Pos.Copy().Offset(bf);
-                BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
-                var outputContainer = checkblock as BlockEntityContainer;
-                if (outputContainer == null) { continue; }
-                WeightedSlot tryoutput=outputContainer.Inventory.GetBestSuitedSlot(dummy[0]);
-                if (tryoutput == null) { continue; }
-                ItemStackMoveOperation op = new ItemStackMoveOperation(Api.World, EnumMouseButton.Left, 0, EnumMergePriority.DirectMerge, outputQuantiy);
-
-                int qmoved = dummy[0].TryPutInto(tryoutput.slot, ref op);
-                if (dummy.Empty) { break; }
+                WeightedSlot tryoutput = outputContainer.Inventory.GetBestSuitedSlot(dummy[0]);
+                if (tryoutput != null) {
+                    ItemStackMoveOperation op = new ItemStackMoveOperation(Api.World, EnumMouseButton.Left, 0, EnumMergePriority.DirectMerge, outputQuantiy);
+                    int qmoved = dummy[0].TryPutInto(tryoutput.slot, ref op);
+                }
             }
+ 
             if (!dummy.Empty)
             {
                 //If no storage then spill on the ground
                 Vec3d pos = Pos.ToVec3d();
-                pos.Y += 0.5f;
+                
                 dummy.DropAll(pos);
             }
             
@@ -126,33 +130,33 @@ namespace qptech.src
             if (rm == null)
             {
                 deviceState = enDeviceState.ERROR;
+                return;
             }
-            foreach (BlockFacing bf in rmInputFaces)
+            
+            BlockPos bp = Pos.Copy().Offset(rmInputFace);
+            BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
+            var inputContainer = checkblock as BlockEntityContainer;
+            if (inputContainer == null) { return; }
+            if (inputContainer.Inventory.Empty) { return; }
+            for (int c = 0; c < inputContainer.Inventory.Count; c++)
             {
-                BlockPos bp = Pos.Copy().Offset(bf);
-                BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
-                var inputContainer = checkblock as BlockEntityContainer;
-                if (inputContainer == null) { continue; }
-                if (inputContainer.Inventory.Empty) { continue; }
-                for (int c = 0; c < inputContainer.Inventory.Count; c++)
+                ItemSlot checkslot = inputContainer.Inventory[c];
+                if (checkslot == null) { continue; }
+                if (checkslot.StackSize == 0) { continue; }
+                bool match = false;
+                if (checkslot.Itemstack.Item!=null && checkslot.Itemstack.Item.FirstCodePart() == rm.FirstCodePart()) { match = true; }
+                else if (checkslot.Itemstack.Block!=null && checkslot.Itemstack.Block.FirstCodePart() == rm.FirstCodePart()) { match = true; }
+                if (match)
                 {
-                    ItemSlot checkslot = inputContainer.Inventory[c];
-                    if (checkslot == null) { continue; }
-                    if (checkslot.StackSize == 0) { continue; }
-                    bool match = false;
-                    if (checkslot.Itemstack.Item!=null && checkslot.Itemstack.Item.FirstCodePart() == rm.FirstCodePart()) { match = true; }
-                    else if (checkslot.Itemstack.Block!=null && checkslot.Itemstack.Block.FirstCodePart() == rm.FirstCodePart()) { match = true; }
-                    if (match)
-                    {
-                        int reqQty = Math.Min(checkslot.StackSize, inputQuantity - internalQuantity);
-                        checkslot.TakeOut(reqQty);
-                        internalQuantity += reqQty;
-                        checkslot.MarkDirty();
+                    int reqQty = Math.Min(checkslot.StackSize, inputQuantity - internalQuantity);
+                    checkslot.TakeOut(reqQty);
+                    internalQuantity += reqQty;
+                    checkslot.MarkDirty();
 
-                    }
                 }
-                
             }
+                
+            
             return;
         }
         public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
@@ -172,6 +176,7 @@ namespace qptech.src
             base.GetBlockInfo(forPlayer, dsc);
             
             dsc.AppendLine("RM   :" + internalQuantity.ToString() + "/" + inputQuantity.ToString());
+            dsc.AppendLine("Make :" + recipe);
         }
     }
 }

@@ -8,7 +8,9 @@
 		maxAmps:2,
 		maxVolts:16,
 		capacitance:2,
-		requiredAmps:1
+		requiredAmps:1,
+		inputFace:"west",
+		outputFace:"east"
 	},
 	blockmaterial: "Metal",
 	drawtype: "json",
