@@ -22,7 +22,8 @@ namespace qptech.src
         protected int internalQuantity = 0; //will store ingredients virtually
         protected List<BlockFacing> rmInputFaces; //what faces will be checked for input containers
         protected List<BlockFacing> rmOutputFaces; //what faces will be checked for output containers
-        
+         DummyInventory dummy;
+         
         /// </summary>
         public override void Initialize(ICoreAPI api)
         {
@@ -32,6 +33,9 @@ namespace qptech.src
             //TEMP CODE TO ADD faces, should be loaded from attributes
             rmInputFaces.Add(BlockFacing.UP);
             rmOutputFaces.Add(BlockFacing.DOWN);
+            dummy = new DummyInventory(api);
+            
+          
         }
         protected override void DoDeviceStart()
         {
@@ -79,14 +83,36 @@ namespace qptech.src
         protected override void DoDeviceComplete()
         {
             deviceState = enDeviceState.IDLE;
-            Block block = Api.World.GetBlock(new AssetLocation(recipe));
-            ItemStack outputStack = new ItemStack(block);
+            Block outputItem = Api.World.GetBlock(new AssetLocation(recipe));
+            if (outputItem == null) { deviceState = enDeviceState.ERROR;return; }
+           
+            ItemStack outputStack = new ItemStack(outputItem, outputQuantiy);
+            dummy[0].Itemstack = outputStack;
+            
+            //Test for available storage
+            
+            foreach (BlockFacing bf in rmOutputFaces)
+            {
+                
+                BlockPos bp = Pos.Copy().Offset(bf);
+                BlockEntity checkblock = Api.World.BlockAccessor.GetBlockEntity(bp);
+                var outputContainer = checkblock as BlockEntityContainer;
+                if (outputContainer == null) { continue; }
+                WeightedSlot tryoutput=outputContainer.Inventory.GetBestSuitedSlot(dummy[0]);
+                if (tryoutput == null) { continue; }
+                ItemStackMoveOperation op = new ItemStackMoveOperation(Api.World, EnumMouseButton.Left, 0, EnumMergePriority.DirectMerge, outputQuantiy);
 
-            Vec3d pos = Pos.ToVec3d();
-            pos.Y += 0.5f;
-            Vec3d vel = new Vec3d(0, 0.25f, 0);
-            Api.World.SpawnItemEntity(outputStack, pos, vel);
-            //Api.World.SpawnItemEntity(grindedStack, this.Pos.ToVec3d().Add(0.5 + face.Normalf.X * 0.7, 0.75, 0.5 + face.Normalf.Z * 0.7), new Vec3d(face.Normalf.X * 0.02f, 0, face.Normalf.Z * 0.02f));
+                int qmoved = dummy[0].TryPutInto(tryoutput.slot, ref op);
+                if (dummy.Empty) { break; }
+            }
+            if (!dummy.Empty)
+            {
+                //If no storage then spill on the ground
+                Vec3d pos = Pos.ToVec3d();
+                pos.Y += 0.5f;
+                dummy.DropAll(pos);
+            }
+            
             if (Api.World.Side == EnumAppSide.Client && animUtil != null)
             {
                 animUtil.StopAnimation("process");
