@@ -12,9 +12,10 @@
 		maxAmps:2,
 		maxVolts:16,
 		capacitance:2,
-		requiredAmps:1,
+		requiredAmps:2,
 		inputFace:"west",
-		outputFace:"east"
+		outputFace:"east",
+		processingTicks:"45"
 	},
 	blockmaterial: "Metal",
 	drawtype: "json",

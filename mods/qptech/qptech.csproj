@@ -80,7 +80,7 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="src\BEEAssembler.cs" />
-    <Compile Include="src\BEEDevice.cs" />
+    <Compile Include="src\BEEBaseDevice.cs" />
     <Compile Include="src\BEElectric.cs" />
     <Compile Include="src\BEEGenerator.cs" />
     <Compile Include="src\BEEWire.cs" />
@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\machines\blocktypes\clayformer.json" />
+    <None Include="assets\machines\blocktypes\generator-primitive.json" />
     <None Include="assets\machines\blocktypes\wireplate.json" />
     <None Include="assets\machines\blocktypes\blocklantern.json" />
     <None Include="assets\machines\blocktypes\cabinet.json" />

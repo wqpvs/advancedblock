@@ -13,7 +13,7 @@ using Vintagestory.GameContent;
 namespace qptech.src
 {
     //Finds items in a container and using power, assembles into new items
-    class BEEAssembler:BEEDevice
+    class BEEAssembler:BEEBaseDevice
     {
         protected string recipe = "game:bowl-raw";
         protected int outputQuantiy = 1;
@@ -77,13 +77,13 @@ namespace qptech.src
                     {
                         Animation = "process",
                         Code = "process",
-                        AnimationSpeed = 1f,
+                        AnimationSpeed = 0.05f,
                         EaseInSpeed = 1,
                         EaseOutSpeed = 1,
                         Weight = 1,
                         BlendMode = EnumAnimationBlendMode.Add
                     });
-                    Api.World.PlaySoundAt(new AssetLocation("sounds/doorslide"), Pos.X, Pos.Y, Pos.Z, null, false, 8, 1);
+                    
                 }
 
                 //sounds/blocks/doorslide.ogg
@@ -119,9 +119,10 @@ namespace qptech.src
                 
                 dummy.DropAll(pos);
             }
-            
+            Api.World.PlaySoundAt(new AssetLocation("sounds/doorslide"), Pos.X, Pos.Y, Pos.Z, null, false, 8, 1);
             if (Api.World.Side == EnumAppSide.Client && animUtil != null)
             {
+                
                 animUtil.StopAnimation("process");
             }
         }

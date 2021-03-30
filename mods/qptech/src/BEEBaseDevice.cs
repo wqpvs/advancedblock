@@ -13,7 +13,7 @@ namespace qptech.src
 {
     //Device to use up electricity
     //intermediate class, shouldn't generally be used
-    class BEEDevice:BEElectric
+    class BEEBaseDevice:BEElectric
     {
         //How many amps to run at maxVolts?
         public enum enDeviceState { IDLE, RUNNING, WARMUP, MATERIALHOLD, ERROR }
@@ -22,7 +22,7 @@ namespace qptech.src
         protected int processingTicks = 30; //how many ticks for process to run
         protected int tickCounter = 0;
         public int RequiredAmps { get { return requiredAmps; } }
-        public bool isPowered { get { return capacitor >= requiredAmps; } }
+        public bool IsPowered { get { return capacitor >= requiredAmps; } }
 
         protected enDeviceState deviceState = enDeviceState.WARMUP;
         public enDeviceState DeviceState { get { return deviceState; } }
@@ -38,7 +38,10 @@ namespace qptech.src
             base.Initialize(api);
             animInit = false;
             //if (Block == null || Block.Attributes == null) { return; }
-            if (Block.Attributes != null) { requiredAmps = Block.Attributes["requiredAmps"].AsInt(requiredAmps); }
+            if (Block.Attributes != null) {
+                requiredAmps = Block.Attributes["requiredAmps"].AsInt(requiredAmps);
+                processingTicks = Block.Attributes["processingTicks"].AsInt(processingTicks);
+            }
             distributionFaces = new List<BlockFacing>(); //no distribution for us!
         }
         protected virtual void UsePower()

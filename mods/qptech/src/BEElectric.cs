@@ -276,7 +276,7 @@ namespace qptech.src
         //and rotate it, returning the appropriate blockfacing
         public static BlockFacing OrientFace(string checkBlockCode, BlockFacing toChange)
         {
-
+            if (!toChange.IsHorizontal) { return toChange; }
             if (checkBlockCode.EndsWith("east"))
             {
 
