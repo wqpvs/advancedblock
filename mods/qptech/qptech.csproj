@@ -77,7 +77,9 @@
     <Content Include="modinfo.json" />
     <Content Include="src\Power System Notes.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="assets\machines\recipes\smithing\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="src\BEEAssembler.cs" />
     <Compile Include="src\BEEBaseDevice.cs" />
@@ -111,6 +113,8 @@
     <None Include="assets\machines\blocktypes\sink.json" />
     <None Include="assets\machines\blocktypes\smelterfurnace.json" />
     <None Include="assets\machines\config\handbook\qptech.json" />
+    <None Include="assets\machines\itemtypes\screwdriver.json" />
+    <None Include="assets\machines\itemtypes\screwdriverhead.json" />
     <None Include="assets\machines\lang\en.json" />
     <None Include="assets\machines\recipes\grid\blocklantern.json" />
     <None Include="assets\machines\recipes\grid\cabinet-lower-door.json" />
@@ -124,6 +128,7 @@
     <None Include="assets\machines\recipes\grid\icebox.json" />
     <None Include="assets\machines\recipes\grid\itemhatch.json" />
     <None Include="assets\machines\recipes\grid\machineryblock.json" />
+    <None Include="assets\machines\recipes\grid\screwdriver.json" />
     <None Include="assets\machines\recipes\grid\sink.json" />
     <None Include="assets\machines\recipes\grid\smelterfurnace.json" />
     <None Include="assets\machines\shapes\block\basin.json" />
@@ -143,6 +148,7 @@
     <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-2a.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-4a.json" />
+    <None Include="assets\machines\shapes\item\screwdriver.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
