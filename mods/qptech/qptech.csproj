@@ -77,9 +77,7 @@
     <Content Include="modinfo.json" />
     <Content Include="src\Power System Notes.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\machines\recipes\smithing\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="src\BEEAssembler.cs" />
     <Compile Include="src\BEEBaseDevice.cs" />
@@ -113,24 +111,34 @@
     <None Include="assets\machines\blocktypes\sink.json" />
     <None Include="assets\machines\blocktypes\smelterfurnace.json" />
     <None Include="assets\machines\config\handbook\qptech.json" />
-    <None Include="assets\machines\itemtypes\screwdriver.json" />
-    <None Include="assets\machines\itemtypes\screwdriverhead.json" />
+    <None Include="assets\machines\itemtypes\part\machineplate.json" />
+    <None Include="assets\machines\itemtypes\part\drilledplate.json" />
+    <None Include="assets\machines\itemtypes\part\rod.json" />
+    <None Include="assets\machines\itemtypes\part\screw.json" />
+    <None Include="assets\machines\itemtypes\tool\pullplate.json" />
+    <None Include="assets\machines\itemtypes\tool\screwdriver.json" />
+    <None Include="assets\machines\itemtypes\tool\screwdriverhead.json" />
     <None Include="assets\machines\lang\en.json" />
-    <None Include="assets\machines\recipes\grid\blocklantern.json" />
-    <None Include="assets\machines\recipes\grid\cabinet-lower-door.json" />
-    <None Include="assets\machines\recipes\grid\cabinet-mid-door.json" />
-    <None Include="assets\machines\recipes\grid\cabinet-upper-door.json" />
-    <None Include="assets\machines\recipes\grid\castironoven.json" />
-    <None Include="assets\machines\recipes\grid\castironovenlarge.json" />
-    <None Include="assets\machines\recipes\grid\firepitloader.json" />
-    <None Include="assets\machines\recipes\grid\firepitstoker.json" />
-    <None Include="assets\machines\recipes\grid\firepitunloader.json" />
-    <None Include="assets\machines\recipes\grid\icebox.json" />
-    <None Include="assets\machines\recipes\grid\itemhatch.json" />
-    <None Include="assets\machines\recipes\grid\machineryblock.json" />
-    <None Include="assets\machines\recipes\grid\screwdriver.json" />
-    <None Include="assets\machines\recipes\grid\sink.json" />
-    <None Include="assets\machines\recipes\grid\smelterfurnace.json" />
+    <None Include="assets\machines\recipes\grid\decor\blocklantern.json" />
+    <None Include="assets\machines\recipes\grid\decor\cabinet-lower-door.json" />
+    <None Include="assets\machines\recipes\grid\decor\cabinet-mid-door.json" />
+    <None Include="assets\machines\recipes\grid\decor\cabinet-upper-door.json" />
+    <None Include="assets\machines\recipes\grid\decor\castironoven.json" />
+    <None Include="assets\machines\recipes\grid\decor\castironovenlarge.json" />
+    <None Include="assets\machines\recipes\grid\industrial\firepitloader.json" />
+    <None Include="assets\machines\recipes\grid\industrial\firepitstoker.json" />
+    <None Include="assets\machines\recipes\grid\industrial\firepitunloader.json" />
+    <None Include="assets\machines\recipes\grid\decor\icebox.json" />
+    <None Include="assets\machines\recipes\grid\industrial\itemhatch.json" />
+    <None Include="assets\machines\recipes\grid\part\machineryblock.json" />
+    <None Include="assets\machines\recipes\grid\part\machineplate.json" />
+    <None Include="assets\machines\recipes\grid\tool\screwdriver.json" />
+    <None Include="assets\machines\recipes\grid\decor\sink.json" />
+    <None Include="assets\machines\recipes\grid\industrial\smelterfurnace.json" />
+    <None Include="assets\machines\recipes\smithing\part\rod.json" />
+    <None Include="assets\machines\recipes\smithing\part\drilledplate.json" />
+    <None Include="assets\machines\recipes\smithing\tool\pullplate.json" />
+    <None Include="assets\machines\recipes\smithing\tool\screwdriverhead.json" />
     <None Include="assets\machines\shapes\block\basin.json" />
     <None Include="assets\machines\shapes\block\battery-primitive.json" />
     <None Include="assets\machines\shapes\block\BlockLantern.json" />
@@ -148,7 +156,13 @@
     <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-2a.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-4a.json" />
-    <None Include="assets\machines\shapes\item\screwdriver.json" />
+    <None Include="assets\machines\shapes\item\part\drilledplate.json" />
+    <None Include="assets\machines\shapes\item\part\machineplate.json" />
+    <None Include="assets\machines\shapes\item\tool\pullplate.json" />
+    <None Include="assets\machines\shapes\item\part\rod.json" />
+    <None Include="assets\machines\shapes\item\part\screw.json" />
+    <None Include="assets\machines\shapes\item\tool\screwdriver.json" />
+    <None Include="assets\machines\shapes\item\tool\screwdriverhead.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

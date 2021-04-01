@@ -1,15 +1,16 @@
 {
-	code: "screwdriverhead",
+	code: "machineplate",
 	creativeinventory: {
 		"general": ["*"]
 	},
 	drawtype: "json",
-	shape: { base: "item/screwdriverhead" },
+	shape: { base: "item/part/machineplate" },
+	maxstacksize: 8,
 	
 	variantgroups: [
-		{ code: "material", states: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel" ] },
+		{ code: "material", states: ["bismuthbronze"] },
 	],
-	
+		
 	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
 	textures: {
 		metal: { base: "game:block/metal/ingot/{material}" }
