@@ -138,7 +138,10 @@ namespace qptech.src
         //TODO need turn on and turn off functions
         public override void TogglePower()
         {
+            
+            if (justswitched) { return; }
             isOn = !isOn;
+            justswitched = true;
             if (Api.World.Side == EnumAppSide.Client&&animUtil!=null)
             {
                 if (!animInit)
@@ -158,6 +161,7 @@ namespace qptech.src
                 }
 
             }
+            Api.World.PlaySoundAt(new AssetLocation("sounds/electriczap"), Pos.X, Pos.Y, Pos.Z, null, false, 8, 1);
         }
         public override int NeedPower()
         {

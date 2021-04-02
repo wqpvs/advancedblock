@@ -9,6 +9,7 @@
 	},
 	"textures": {
 		"machinery-openhatch": "block/machinery-openhatch",
+		"machinery-pileup": "block/machinery-pileup",
 		"machinery": "block/machinery"
 	},
 	"elements": [
@@ -157,7 +158,7 @@
 				"east": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
 				"south": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
 				"west": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
-				"up": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+				"up": { "texture": "#machinery-pileup", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 180 },
 				"down": { "texture": "#machinery", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
 			}
 		},

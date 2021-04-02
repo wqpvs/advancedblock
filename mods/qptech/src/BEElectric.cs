@@ -30,7 +30,7 @@ namespace qptech.src
         public bool IsPowered { get { return false; } }
         public bool IsOn { get { return isOn; } }
         protected bool notfirsttick = false;
-       
+        protected bool justswitched = false; //create a delay after the player switches power
 
         public override void Initialize(ICoreAPI api)
         {
@@ -170,6 +170,7 @@ namespace qptech.src
             }
             if (isOn) { DistributePower(); }
             usedconnections = new List<BEElectric>(); //clear record of connections for next tick
+            justswitched = false;
         }
 
         public override void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
@@ -243,7 +244,10 @@ namespace qptech.src
 
         public virtual void TogglePower()
         {
+            if (justswitched) { return; }
             isOn = !isOn;
+            justswitched = true;
+            Api.World.PlaySoundAt(new AssetLocation("sounds/electriczap"), Pos.X, Pos.Y, Pos.Z, null, false, 8, 1);
         }
 
         public virtual int NeedPower()
