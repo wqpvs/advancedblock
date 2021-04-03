@@ -129,6 +129,8 @@
     <None Include="assets\machines\recipes\grid\decor\cabinet-upper-door.json" />
     <None Include="assets\machines\recipes\grid\decor\castironoven.json" />
     <None Include="assets\machines\recipes\grid\decor\castironovenlarge.json" />
+    <None Include="assets\machines\recipes\grid\industrial\clayformer.json" />
+    <None Include="assets\machines\recipes\grid\industrial\generator-primitive.json" />
     <None Include="assets\machines\recipes\grid\industrial\firepitloader.json" />
     <None Include="assets\machines\recipes\grid\industrial\firepitstoker.json" />
     <None Include="assets\machines\recipes\grid\industrial\firepitunloader.json" />
@@ -144,8 +146,9 @@
     <None Include="assets\machines\recipes\grid\tool\screwdriver.json" />
     <None Include="assets\machines\recipes\grid\decor\sink.json" />
     <None Include="assets\machines\recipes\grid\industrial\smelterfurnace.json" />
+    <None Include="assets\machines\recipes\smithing\part\drilledplate - Copy.json" />
     <None Include="assets\machines\recipes\smithing\part\rod.json" />
-    <None Include="assets\machines\recipes\smithing\part\drilledplate.json" />
+    <None Include="assets\machines\recipes\smithing\part\screw.json" />
     <None Include="assets\machines\recipes\smithing\tool\pullplate.json" />
     <None Include="assets\machines\recipes\smithing\tool\screwdriverhead.json" />
     <None Include="assets\machines\shapes\block\basin.json" />
