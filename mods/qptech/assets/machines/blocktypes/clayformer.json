@@ -15,7 +15,7 @@
 		requiredAmps:2,
 		inputFace:"west",
 		outputFace:"east",
-		processingTicks:"45"
+		processingTicks:45
 	},
 	blockmaterial: "Metal",
 	drawtype: "json",

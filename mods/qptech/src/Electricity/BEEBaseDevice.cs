@@ -13,7 +13,7 @@ namespace qptech.src
 {
     //Device to use up electricity
     //intermediate class, shouldn't generally be used
-    class BEEBaseDevice:BEElectric
+    public class BEEBaseDevice:BEElectric
     {
         //How many amps to run at maxVolts?
         public enum enDeviceState { IDLE, RUNNING, WARMUP, MATERIALHOLD, ERROR }

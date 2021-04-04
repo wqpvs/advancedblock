@@ -65,6 +65,8 @@
     <Content Include="assets\game\sounds\doorslide.ogg" />
     <Content Include="assets\game\sounds\electriczap.ogg" />
     <Content Include="assets\game\sounds\industrial01.ogg" />
+    <None Include="assets\game\blocktypes\tincan-open.json" />
+    <None Include="assets\game\blocktypes\tincan-full.json" />
     <Content Include="assets\machines\textures\block\castiron.png" />
     <Content Include="assets\machines\textures\block\lightblock.png" />
     <Content Include="assets\machines\textures\block\machinery-bighatch.png" />
@@ -74,25 +76,33 @@
     <Content Include="assets\machines\textures\block\machinery-pileup.png" />
     <Content Include="assets\machines\textures\block\machinery-tin.png" />
     <Content Include="assets\machines\textures\block\machinery.png" />
+    <Content Include="assets\game\textures\block\tincan.png" />
     <Content Include="assets\machines\textures\block\oak1.png" />
     <Content Include="assets\machines\textures\block\shinybrass.png" />
     <Content Include="modinfo.json" />
     <Content Include="src\Power System Notes.txt" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="src\BEEAssembler.cs" />
-    <Compile Include="src\BEEBaseDevice.cs" />
-    <Compile Include="src\BEElectric.cs" />
-    <Compile Include="src\BEEGenerator.cs" />
-    <Compile Include="src\BEEWire.cs" />
-    <Compile Include="src\ElectricalBlock.cs" />
-    <Compile Include="src\Electricity.cs" />
-    <Compile Include="src\icebox.cs" />
-    <Compile Include="src\moddedfirepit.cs" />
-    <Compile Include="src\firepitstoker.cs" />
-    <Compile Include="src\firepitunloader.cs" />
-    <Compile Include="src\firepitloader.cs" />
+    <Folder Include="assets\machines\blocktypes\mechanics\" />
+    <Folder Include="assets\machines\blocktypes\misc\" />
+    <Folder Include="assets\machines\shapes\block\misc\" />
+    <Folder Include="assets\machines\textures\block\misc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\Electricity\BEEAssembler.cs" />
+    <Compile Include="src\Electricity\BEEBaseDevice.cs" />
+    <Compile Include="src\Electricity\BEElectric.cs" />
+    <Compile Include="src\Electricity\BEEGenerator.cs" />
+    <Compile Include="src\Electricity\BEEWire.cs" />
+    <Compile Include="src\misc\BlockCannedMeal.cs" />
+    <Compile Include="src\Electricity\ElectricalBlock.cs" />
+    <Compile Include="src\Electricity\Electricity.cs" />
+    <Compile Include="src\misc\icebox.cs" />
+    <Compile Include="src\misc\ItemQuarryTool.cs" />
+    <Compile Include="src\misc\moddedfirepit.cs" />
+    <Compile Include="src\misc\firepitstoker.cs" />
+    <Compile Include="src\misc\firepitunloader.cs" />
+    <Compile Include="src\misc\firepitloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\machines\blocktypes\clayformer.json" />
@@ -119,6 +129,7 @@
     <None Include="assets\machines\itemtypes\part\wire.json" />
     <None Include="assets\machines\itemtypes\part\rod.json" />
     <None Include="assets\machines\itemtypes\part\screw.json" />
+    <None Include="assets\machines\itemtypes\tool\quarrytool.json" />
     <None Include="assets\machines\itemtypes\tool\pullplate.json" />
     <None Include="assets\machines\itemtypes\tool\screwdriver.json" />
     <None Include="assets\machines\itemtypes\tool\screwdriverhead.json" />
@@ -165,6 +176,9 @@
     <None Include="assets\machines\shapes\block\firepit-unloader.json" />
     <None Include="assets\machines\shapes\block\generator.json" />
     <None Include="assets\machines\shapes\block\itemhatch.json" />
+    <None Include="assets\game\shapes\block\can-full.json" />
+    <None Include="assets\game\shapes\block\can-open.json" />
+    <None Include="assets\game\shapes\block\can-sealed.json" />
     <None Include="assets\machines\shapes\block\smelter-furnace-closed.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-2a.json" />
     <None Include="assets\machines\shapes\block\wireplate-tin-4a.json" />
