@@ -20,6 +20,7 @@ namespace qptech.src
             api.RegisterBlockClass("ElectricalBlock", typeof(ElectricalBlock));
             api.RegisterBlockClass("BlockCannedMeal", typeof(BlockCannedMeal));
             api.RegisterItemClass("ItemQuarryTool", typeof(ItemQuarryTool));
+            api.RegisterItemClass("ItemJetPack", typeof(ItemJetPack));
 
             //api.RegisterBlockEntityBehaviorClass("BEBMPMotor", typeof(BEBMPMotor));
             //api.RegisterBlockClass("BlockPoweredRotor", typeof(BlockPoweredRotor));

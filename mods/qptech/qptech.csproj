@@ -98,6 +98,7 @@
     <Compile Include="src\Electricity\ElectricalBlock.cs" />
     <Compile Include="src\Electricity\Electricity.cs" />
     <Compile Include="src\misc\icebox.cs" />
+    <Compile Include="src\misc\ItemJetPack.cs" />
     <Compile Include="src\misc\ItemQuarryTool.cs" />
     <Compile Include="src\misc\moddedfirepit.cs" />
     <Compile Include="src\misc\firepitstoker.cs" />
@@ -129,6 +130,7 @@
     <None Include="assets\machines\itemtypes\part\wire.json" />
     <None Include="assets\machines\itemtypes\part\rod.json" />
     <None Include="assets\machines\itemtypes\part\screw.json" />
+    <None Include="assets\machines\itemtypes\tool\jetpack.json" />
     <None Include="assets\machines\itemtypes\tool\quarrytool.json" />
     <None Include="assets\machines\itemtypes\tool\pullplate.json" />
     <None Include="assets\machines\itemtypes\tool\screwdriver.json" />
