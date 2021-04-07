@@ -131,6 +131,7 @@
     <None Include="assets\machines\itemtypes\part\rod.json" />
     <None Include="assets\machines\itemtypes\part\screw.json" />
     <None Include="assets\machines\itemtypes\tool\jetpack.json" />
+    <None Include="assets\machines\itemtypes\tool\jetpackcontrol.json" />
     <None Include="assets\machines\itemtypes\tool\quarrytool.json" />
     <None Include="assets\machines\itemtypes\tool\pullplate.json" />
     <None Include="assets\machines\itemtypes\tool\screwdriver.json" />

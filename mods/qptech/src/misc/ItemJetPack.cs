@@ -16,11 +16,11 @@ namespace qptech.src.misc
     class ItemJetPack : Item
     {
         
-        double thrust = 0.1;
-        double lateralthrust = 0.025;
-        double throttleSpeed = 0.25; //max speed in x sec
+        double thrust = 0.075;
+        double lateralthrust = 0.01;
+        double throttleSpeed = 0.1; //max speed in x sec
         double throttlePercent = 0; //current throttle
-        double maxSpeed = 1; //cut off thrust if speed too high
+        double maxSpeed = 0.5; //cut off thrust if speed too high
         double ceiling = 300; //cut off any thrust after this
 
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
@@ -43,10 +43,10 @@ namespace qptech.src.misc
             {
                 byEntity.Pos.Motion.Y = thrust*throttlePercent;
             }
-            else if (byEntity.HeadPitch > 0.05f)
-            {
+            //else if (byEntity.HeadPitch > 0.05f)
+            //{
                 //let gravity do its thing
-            }
+            //}
             else
             {
                 hovermode = true;

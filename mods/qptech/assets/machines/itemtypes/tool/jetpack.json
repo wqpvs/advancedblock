@@ -1,55 +1,41 @@
-{
+﻿{
 	code: "jetpack",
-	class: "ItemJetPack",
-	creativeinventory: {
-		"general": ["*"]
-	},
-	drawtype: "json",
-	shape: { base: "item/tool/pullplate" },
+	maxstacksize: 1,
 	attributes: {
-		
-		toolrackTransform: {
-			translation: { x: 0, y: 0.61, z: 0 },
-			rotation: { x: 5, y: 180, z: -1 },
-			scale: 1.25
+		wearableAttachment: true,
+		attachShape: { base: "item/worn/jetpack" },
+		backpack: {
+			quantitySlots: 1
 		}
 	},
-	variantgroups: [
-		{ code: "material", states: ["steel" ] },
-	],
-	
-	enabled: true,
-	heldTpHitAnimation: "breaktool",
-	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	shape: { base: "item/worn/jetpack" },
 	textures: {
-		metal: { base: "game:block/metal/ingot/{material}" }
+		all: { base: "block/castiron" },
+		
 	},
+	storageFlags: 2,
+	creativeinventory: { "general": ["*"], "items": ["*"] },
 	guiTransform: {
 		translation: { x: 0, y: 0, z: 0 },
-		rotation: { x: 9, y: 137, z: -53 },
-		origin: { x: 0.44, y: 0, z: 0.38 },
-		scale: 2.92
+		rotation: { x: -20, y: 21, z: 180 },
+		origin: { x: 0.53, y: 0.35, z: 0.5 },
+		scale: 2.3,
+		rotate: true
 	},
 	fpHandTransform: {
-		translation: { x: -0.1, y: 0.2, z: 0 },
-		rotation: { x: 90, y: 99, z: -42 },
-		origin: { x: 0.5, y: 0, z: 0.5 },
-		scale: 2.15
+		translation: { x: 0, y: 0, z: 0.2 },
+		rotation: { x: 20, y: -73, z: 10 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -0.66, y: -0.5, z: -0.45 },
+		rotation: { x: -89, y: 67, z: -91 },
+		scale: 0.86
 	},
 	groundTransform: {
 		translation: { x: 0, y: 0, z: 0 },
-		rotation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 180, y: 33, z: -180 },
 		origin: { x: 0.5, y: 0, z: 0.5 },
-		scale: 4.31
-	},
-	tpHandTransform: {
-		translation: { x: -0.78, y: -0.09, z: -0.67 },
-		rotation: { x: 9, y: -1, z: -16 },
-		origin: { x: 0.5, y: 0, z: 0.5 },
-		scale: 0.76
-	},
-	durabilitybytype: {
-		
-		"pullplate-steel": 5000,
+		scale: 4.5
 	}
 }

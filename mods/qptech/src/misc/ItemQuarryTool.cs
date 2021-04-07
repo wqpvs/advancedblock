@@ -35,7 +35,7 @@ namespace qptech.src.misc
             // - break back block
             // - reset
             if (blockSel == null) { return false; }
-            if (!BlockFacing.HORIZONTALS.Contains(blockSel.Face)) { return false; } //not pointed at a block ahead, cancel
+            //if (!BlockFacing.HORIZONTALS.Contains(blockSel.Face)) { return false; } //not pointed at a block ahead, cancel
             if (secondsUsed>0.25f && !soundplayed)
             {
                 //api.World.PlaySoundAt(new AssetLocation("sounds/quarrytemp"), blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, null, false, 8, 1);
@@ -45,27 +45,45 @@ namespace qptech.src.misc
             {
 
                 IPlayer p = api.World.NearestPlayer(byEntity.Pos.X, byEntity.Pos.Y, byEntity.Pos.Z);
+                Block tb;
+                BlockPos bp;
+                BlockPos cp = null;
+                bool altered = false;
                 foreach (BlockFacing bf in BlockFacing.ALLFACES)
                 {
-                    BlockPos bp = blockSel.Position.Copy().Offset(bf);
-                    Block tb = api.World.BlockAccessor.GetBlock(bp);
+                    bp = blockSel.Position.Copy().Offset(bf);
+                    tb = api.World.BlockAccessor.GetBlock(bp);
 
                     if (tb == null) { continue; }
                     if (tb.FirstCodePart() == "rock")
                     {
                         tb.OnBlockBroken(api.World, bp, p, 1);
+                        altered = true;
+                        cp = bp.Copy();
                     }
                 }
-                //nextactionat = secondsUsed + 2;
-                soundplayed = false;
-                return false;
+                if (altered)
+                {
+                    tb = api.World.BlockAccessor.GetBlock(blockSel.Position);
+                    if (tb != null)
+                    {
+                        tb.OnNeighbourBlockChange(api.World, blockSel.Position,cp);
+                        soundplayed = false;
+                        nextactionat += 2;
+                    }
+                }
+                
+                
             }
             return true;
         }
-        public override bool OnHeldInteractCancel(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+
+        public override void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
-            
-            return false;
+            soundplayed = false;
+            nextactionat = 0;
+            base.OnHeldInteractStop(secondsUsed, slot, byEntity, blockSel, entitySel);
         }
+
     }
 }
