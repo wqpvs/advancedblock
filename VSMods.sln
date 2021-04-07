@@ -9,10 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSModLauncher", "VSModLaunc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qptech", "mods\qptech\qptech.csproj", "{36C91EE7-484E-4A49-8834-E3502F0FF8CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qptech Furniture", "mods\qptech furniture\Qptech Furniture.csproj", "{085393C3-B710-4258-8012-556C7C4F3DF1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RangedWeapons", "mods\weapons wip\RangedWeapons.csproj", "{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,18 +28,6 @@ Global
 		{36C91EE7-484E-4A49-8834-E3502F0FF8CF}.Release x64|Any CPU.Build.0 = Release|Any CPU
 		{36C91EE7-484E-4A49-8834-E3502F0FF8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36C91EE7-484E-4A49-8834-E3502F0FF8CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Release x64|Any CPU.ActiveCfg = Release|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Release x64|Any CPU.Build.0 = Release|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{085393C3-B710-4258-8012-556C7C4F3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Release x64|Any CPU.ActiveCfg = Release|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Release x64|Any CPU.Build.0 = Release|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90ECA706-B5D0-493E-B1B8-E51B71A5BC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
