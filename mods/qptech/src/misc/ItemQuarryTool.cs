@@ -34,11 +34,10 @@ namespace qptech.src.misc
             // - second extension
             // - break back block
             // - reset
-            if (blockSel == null) { return false; }
-            //if (!BlockFacing.HORIZONTALS.Contains(blockSel.Face)) { return false; } //not pointed at a block ahead, cancel
+            if (!BlockFacing.HORIZONTALS.Contains(blockSel.Face)) { return false; } //not pointed at a block ahead, cancel
             if (secondsUsed>0.25f && !soundplayed)
             {
-                //api.World.PlaySoundAt(new AssetLocation("sounds/quarrytemp"), blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, null, false, 8, 1);
+                api.World.PlaySoundAt(new AssetLocation("sounds/quarrytemp"), blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, null, false, 8, 1);
                 soundplayed = true;
             }
             if (secondsUsed > nextactionat)
@@ -62,18 +61,9 @@ namespace qptech.src.misc
                         cp = bp.Copy();
                     }
                 }
-                if (altered)
-                {
-                    tb = api.World.BlockAccessor.GetBlock(blockSel.Position);
-                    if (tb != null)
-                    {
-                        tb.OnNeighbourBlockChange(api.World, blockSel.Position,cp);
-                        soundplayed = false;
-                        nextactionat += 2;
-                    }
-                }
-                
-                
+                //nextactionat = secondsUsed + 2;
+                soundplayed = false;
+                return false;
             }
             return true;
         }
